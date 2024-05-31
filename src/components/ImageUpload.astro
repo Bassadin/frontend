@@ -1,34 +1,58 @@
 ---
-
+import "@uppy/core/dist/style.min.css";
+import "@uppy/dashboard/dist/style.min.css";
+import "@uppy/image-editor/dist/style.min.css";
 ---
 
 <li class="card">
   <div class="flex-center">
     <h2>Upload your image here:</h2>
 
-    <input
+    <!-- <input
       type="file"
       id="file"
       name="file"
       accept="image/png, image/jpeg, image/gif, image/webp"
-    />
+    /> -->
+
+    <div id="drag-drop"></div>
+
     <button class="upload-button">Upload</button>
   </div>
 </li>
 
 <script>
+  import Uppy from "@uppy/core";
+  import Dashboard from "@uppy/dashboard";
+  import ImageEditor from "@uppy/image-editor";
+
+  const uppyInstance = new Uppy({
+    allowMultipleUploadBatches: false,
+    autoProceed: true,
+  })
+    .use(Dashboard, {
+      inline: true,
+      target: "#drag-drop",
+      hideUploadButton: true,
+    })
+    .use(ImageEditor, {
+      cropperOptions: {
+        aspectRatio: 1.33,
+        croppedCanvasOptions: {},
+      },
+    });
+
   const baseUrl = import.meta.env.PUBLIC_API_BASE_URL;
   const imageUrl = `${baseUrl}api/image/scale`;
   const gifUrl = `${baseUrl}api/gif/scale`;
 
-  const fileInput = document.getElementById("file") as HTMLInputElement;
   const uploadButton = document.querySelector(
     ".upload-button"
   ) as HTMLButtonElement;
 
   uploadButton.addEventListener("click", async () => {
     try {
-      const file = fileInput.files?.[0];
+      const file = uppyInstance.getFiles()[0].data;
       if (!file) {
         throw new Error("Please select a file to upload");
       }
