@@ -3,7 +3,7 @@ import { Icon } from "astro-icon/components";
 ---
 
 <footer>
-  <p>© 2024 UnFUG</p>
+  <p>© 2024 UnFUG - HFU Furtwangen</p>
   <a target="blank" href="https://freiburg.social/@bassadin"
     ><Icon name="mdi:mastodon" /> <span>bassadin (frontend)</span></a
   >
@@ -17,18 +17,23 @@ import { Icon } from "astro-icon/components";
 
 <style lang="less">
   footer {
-    color: white;
+    color: #eee;
     text-align: center;
-    padding: 10px;
-    position: fixed;
-    bottom: 0;
+    margin: 10px;
     width: 100%;
 
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
+  }
+
+  p,
+  a {
+    padding: 5px;
+    margin: 0 5px;
   }
 
   a {
@@ -37,12 +42,11 @@ import { Icon } from "astro-icon/components";
     align-items: center;
 
     border-radius: 10px;
-    padding: 8px;
 
     transition: 0.2s background-color;
 
     &:hover {
-      background-color: #ffffff33;
+      background-color: #eee3;
     }
 
     span {

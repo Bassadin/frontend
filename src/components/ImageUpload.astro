@@ -4,9 +4,8 @@
 
 <li class="card">
   <div class="flex-center">
-    <h2>Upload your image here</h2>
+    <h2>Upload your image here:</h2>
 
-    <label for="file">Choose a picture to upload:</label>
     <input
       type="file"
       id="file"
@@ -101,32 +100,11 @@
     border-radius: 7px;
     border: none;
     cursor: pointer;
-    transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: background-color 0.2s;
 
     &:hover {
-      background: linear-gradient(
-        to right,
-        #6666ff,
-        #0099ff,
-        #00ff00,
-        #ff3399,
-        #6666ff
-      );
-      animation: rainbow_animation 3s ease-in-out infinite;
-      color: white;
-
-      background-size: 400% 100%;
-    }
-  }
-
-  @keyframes rainbow_animation {
-    0%,
-    100% {
-      background-position: 0 0;
-    }
-
-    50% {
-      background-position: 100% 0;
+      background-color: var(--accent);
+      color: #eee;
     }
   }
 </style>
