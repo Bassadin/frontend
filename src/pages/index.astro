@@ -7,7 +7,10 @@ import Footer from "@components/Footer.astro";
 
 <Layout title="UnFUG LED Matrix">
   <main>
-    <AnimatedRainbowText text="UnFUG LED Matrix" />
+    <AnimatedRainbowText><h1>UnFUG LED Matrix</h1></AnimatedRainbowText>
+    <h2>
+      currently at <a href="https://entropia.de/GPN22" target="_blank">GPN22</a>
+    </h2>
     <ul role="list" class="link-card-grid">
       <ImageUpload />
     </ul>
@@ -15,7 +18,7 @@ import Footer from "@components/Footer.astro";
   <Footer />
 </Layout>
 
-<style>
+<style lang="less">
   main {
     margin: auto;
     padding: 1rem;
@@ -24,6 +27,29 @@ import Footer from "@components/Footer.astro";
     color: white;
     font-size: 20px;
     line-height: 1.6;
+  }
+
+  h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 1em;
+    margin: 0;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  a {
+    text-decoration: underline;
+	transition: 0.2s color;
+
+    &:hover {
+      color: var(--accent);
+    }
   }
 
   .text-gradient {

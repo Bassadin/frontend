@@ -28,44 +28,46 @@
   ) as HTMLButtonElement;
 
   uploadButton.addEventListener("click", async () => {
-    const file = fileInput.files?.[0];
-    if (!file) {
-      alert("Please select a file to upload");
-      return;
-    }
+    try {
+      const file = fileInput.files?.[0];
+      if (!file) {
+        throw new Error("Please select a file to upload");
+      }
 
-    const formData = new FormData();
-    formData.append("file", file);
+      const formData = new FormData();
+      formData.append("file", file);
 
-    const whatIsAGifArray = ["image/gif", "image/webp"];
+      const whatIsAGifArray = ["image/gif", "image/webp"];
 
-    const requestUrl = whatIsAGifArray.includes(file.type) ? gifUrl : imageUrl;
+      const requestUrl = whatIsAGifArray.includes(file.type)
+        ? gifUrl
+        : imageUrl;
 
-    console.debug(`Uploading image to ${requestUrl}`);
+      console.debug(`Uploading image to ${requestUrl}`);
 
-    const response = await fetch(requestUrl, {
-      method: "POST",
-      body: formData,
-    });
+      const response = await fetch(requestUrl, {
+        method: "POST",
+        body: formData,
+      });
 
-    if (response.status === 429) {
-      alert("429 - Too many requests. Please try again later.");
-      return;
-    }
+      if (response.status === 429) {
+        throw new Error("429 - Too many requests. Please try again later.");
+      }
 
-    if (response.status === 413) {
-      alert("413 - File too large. Please upload a smaller file. (Max: 1MB)");
-      return;
-    }
+      if (response.status === 413) {
+        throw new Error(
+          "413 - File too large. Please upload a smaller file. (Max: 1MB)"
+        );
+      }
 
-    if (!response.ok) {
-      alert(`Failed to upload image, error: ${await response.json()}`);
-      return;
-    } else {
+      if (!response.ok) {
+        const errorResponse = await response.json();
+        throw new Error(`Failed to upload image, error: ${errorResponse}`);
+      }
+
       alert("Image uploaded successfully");
-
-      // clear the input field
-      fileInput.value = "";
+    } catch (error: any) {
+      alert(error.message);
     }
   });
 </script>
@@ -99,9 +101,9 @@
     border-radius: 7px;
     border: none;
     cursor: pointer;
+    transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
 
     &:hover {
-      transition: background-color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
       background: linear-gradient(
         to right,
         #6666ff,
