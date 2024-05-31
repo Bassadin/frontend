@@ -1,40 +1,42 @@
 ---
-import Layout from '@layouts/Layout.astro';
-import ImageUpload from '@components/ImageUpload.astro';
-import AnimatedRainbowText from '@components/AnimatedRainbowText.astro';
+import Layout from "@layouts/Layout.astro";
+import ImageUpload from "@components/ImageUpload.astro";
+import AnimatedRainbowText from "@components/AnimatedRainbowText.astro";
+import Footer from "@components/Footer.astro";
 ---
 
 <Layout title="UnFUG LED Matrix">
-	<main>
-		<AnimatedRainbowText text="UnFUG LED Matrix"/>
-		<ul role="list" class="link-card-grid">
-			<ImageUpload/>
-		</ul>
-	</main>
+  <main>
+    <AnimatedRainbowText text="UnFUG LED Matrix" />
+    <ul role="list" class="link-card-grid">
+      <ImageUpload />
+    </ul>
+  </main>
+  <Footer />
 </Layout>
 
 <style>
-	main {
-		margin: auto;
-		padding: 1rem;
-		width: 800px;
-		max-width: calc(100% - 2rem);
-		color: white;
-		font-size: 20px;
-		line-height: 1.6;
-	}
-	
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
-		gap: 2rem;
-		padding: 0;
-	}
+  main {
+    margin: auto;
+    padding: 1rem;
+    width: 800px;
+    max-width: calc(100% - 2rem);
+    color: white;
+    font-size: 20px;
+    line-height: 1.6;
+  }
+
+  .text-gradient {
+    background-image: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
+  }
+  .link-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
+    gap: 2rem;
+    padding: 0;
+  }
 </style>
