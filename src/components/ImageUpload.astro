@@ -87,7 +87,12 @@ import "toastify-js/src/toastify.css";
 
       Toastify({ text: "Image uploaded successfully!" }).showToast();
     } catch (error: any) {
-      Toastify({ text: error.message }).showToast();
+      Toastify({
+        text: error.message,
+        style: {
+          background: "linear-gradient(to right, #707, #b00)",
+        },
+      }).showToast();
     }
   }
 
