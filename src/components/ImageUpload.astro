@@ -15,7 +15,7 @@ import "@uppy/image-editor/dist/style.min.css";
       accept="image/png, image/jpeg, image/gif, image/webp"
     /> -->
 
-    <div id="drag-drop"></div>
+    <div id="uppy-file-upload"></div>
 
     <button class="upload-button">Upload</button>
   </div>
@@ -32,7 +32,9 @@ import "@uppy/image-editor/dist/style.min.css";
   })
     .use(Dashboard, {
       inline: true,
-      target: "#drag-drop",
+      width: "100%",
+      height: 500,
+      target: "#uppy-file-upload",
       hideUploadButton: true,
     })
     .use(ImageEditor, {
@@ -98,7 +100,7 @@ import "@uppy/image-editor/dist/style.min.css";
 <style lang="less">
   .card {
     list-style: none;
-    padding: 2rem;
+    padding: 1rem;
     background-color: #23262d;
     border-radius: 7px;
     background-position: 100%;
@@ -107,6 +109,10 @@ import "@uppy/image-editor/dist/style.min.css";
     margin: 0;
     font-size: 1.25rem;
     transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  #uppy-file-upload {
+    width: 100%;
   }
 
   .flex-center {
