@@ -87,7 +87,7 @@ import "@uppy/image-editor/dist/style.min.css";
     }
   }
 
-  uploadButton.addEventListener("click", async () => upload);
+  uploadButton.addEventListener("click", async () => upload());
   document.addEventListener("keydown", (event) => {
     if (event.ctrlKey && event.key === "Enter") {
       upload();
