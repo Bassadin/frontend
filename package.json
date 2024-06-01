@@ -18,9 +18,11 @@
     "@uppy/image-editor": "^2.4.6",
     "astro": "^4.9.2",
     "astro-icon": "^1.1.0",
+    "toastify-js": "^1.12.0",
     "typescript": "^5.4.5"
   },
   "devDependencies": {
+    "@types/toastify-js": "^1.12.3",
     "less": "^4.2.0"
   }
 }
