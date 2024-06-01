@@ -43,7 +43,7 @@ import "@uppy/image-editor/dist/style.min.css";
     ".upload-button"
   ) as HTMLButtonElement;
 
-  uploadButton.addEventListener("click", async () => {
+  async function upload() {
     try {
       const file = uppyInstance.getFiles()[0]?.data;
       if (!file) {
@@ -84,6 +84,13 @@ import "@uppy/image-editor/dist/style.min.css";
       alert("Image uploaded successfully");
     } catch (error: any) {
       alert(error.message);
+    }
+  }
+
+  uploadButton.addEventListener("click", async () => upload);
+  document.addEventListener("keydown", (event) => {
+    if (event.ctrlKey && event.key === "Enter") {
+      upload();
     }
   });
 </script>
