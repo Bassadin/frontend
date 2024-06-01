@@ -49,6 +49,7 @@ import "toastify-js/src/toastify.css";
 
   async function upload() {
     try {
+      Toastify({ text: "Uploading image..." }).showToast();
       const file = uppyInstance.getFiles()[0]?.data;
       if (!file) {
         throw new Error("Please select a file to upload");
