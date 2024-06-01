@@ -3,11 +3,17 @@ import Layout from "@layouts/Layout.astro";
 import ImageUpload from "@components/ImageUpload.astro";
 import AnimatedRainbowText from "@components/AnimatedRainbowText.astro";
 import Footer from "@components/Footer.astro";
+
+import unfugLogoImage from "@images/unfug_logo.svg";
 ---
 
 <Layout title="UnFUG LED Matrix">
   <main>
-    <AnimatedRainbowText><h1>UnFUG LED Matrix</h1></AnimatedRainbowText>
+    <AnimatedRainbowText
+      ><h1>
+        UnFUG <img src={unfugLogoImage.src} alt="UnFUG Logo" /> LED Matrix
+      </h1></AnimatedRainbowText
+    >
     <h2>
       currently at <a href="https://entropia.de/GPN22" target="_blank">GPN22</a>
     </h2>
@@ -36,6 +42,13 @@ import Footer from "@components/Footer.astro";
     text-align: center;
     margin-bottom: 1em;
     margin: 0;
+
+    img {
+      height: 5rem;
+      vertical-align: middle;
+
+      filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+    }
   }
 
   h2 {
@@ -45,7 +58,7 @@ import Footer from "@components/Footer.astro";
 
   a {
     text-decoration: underline;
-	transition: 0.2s color;
+    transition: 0.2s color;
 
     &:hover {
       color: var(--accent);
