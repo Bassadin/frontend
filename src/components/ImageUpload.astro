@@ -7,16 +7,7 @@ import "@uppy/image-editor/dist/style.min.css";
 <li class="card">
   <div class="flex-center">
     <h2>Upload your image here:</h2>
-
-    <!-- <input
-      type="file"
-      id="file"
-      name="file"
-      accept="image/png, image/jpeg, image/gif, image/webp"
-    /> -->
-
     <div id="uppy-file-upload"></div>
-
     <button class="upload-button">Upload</button>
   </div>
 </li>
@@ -39,7 +30,7 @@ import "@uppy/image-editor/dist/style.min.css";
     })
     .use(ImageEditor, {
       cropperOptions: {
-        aspectRatio: 1.33,
+        aspectRatio: 1.5,
         croppedCanvasOptions: {},
       },
     });
@@ -54,7 +45,7 @@ import "@uppy/image-editor/dist/style.min.css";
 
   uploadButton.addEventListener("click", async () => {
     try {
-      const file = uppyInstance.getFiles()[0].data;
+      const file = uppyInstance.getFiles()[0]?.data;
       if (!file) {
         throw new Error("Please select a file to upload");
       }
@@ -91,6 +82,8 @@ import "@uppy/image-editor/dist/style.min.css";
       }
 
       alert("Image uploaded successfully");
+
+      uppyInstance.cancelAll({ reason: "user" });
     } catch (error: any) {
       alert(error.message);
     }
